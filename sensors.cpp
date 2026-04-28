@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
+#include <cstdint>
 
 #define I2C_DEVICE "/dev/i2c-1"
 #define TCA_ADDR 0x70
