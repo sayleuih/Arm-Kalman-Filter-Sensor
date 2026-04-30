@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_BNO055.h>
 #include <Adafruit_Sensor.h>
-#include "estimator.h"
+#include "fusion/estimator.h"
 
 #define MUX_ADDR 0x70
 #define BNO_ADDR 0x28
@@ -57,10 +57,15 @@ uint64_t last = 0;
 
 void setup() {
     Serial.begin(115200);
+    delay(500);
+    Serial.println("\n\n=== ESP32 STARTING ===");
+    Serial.println("Setup() called");
+    
     Wire.begin(21, 22);
     Wire.setClock(400000);
 
     delay(1000);
+    Serial.println("Initializing IMUs...");
 
     for(int i=0;i<3;i++){
         selectMux(imus[i].ch);
