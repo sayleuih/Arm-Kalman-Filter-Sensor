@@ -1,9 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <SPI.h>
 #include <Adafruit_BNO055.h>
 #include <Adafruit_Sensor.h>
-#include "sensor_fusion/estimator.h"
+#include "estimator.h"
 
 #define MUX_ADDR 0x70
 #define BNO_ADDR 0x28
