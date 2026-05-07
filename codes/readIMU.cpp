@@ -13,9 +13,10 @@ struct IMU {
 };
 
 IMU imus[] = {
-  {"BASE", 1},
-  {"ARM", 7},
-  {"WRIST", 0}
+  {"BASE", 1},  // Arm base
+  {"ARM", 7},   // Arm middle link
+  {"WRIST", 0}, // End-effector frame
+  // {"CART", 2}
 };
 
 const int NUM_IMUS = sizeof(imus) / sizeof(imus[0]);
@@ -58,7 +59,7 @@ void setup() {
     delay(500);
   }
 
-  Serial.println("Starting yaw/roll/pitch readings...");
+  Serial.println("Starting roll/pitch/yaw readings...");
 }
 
 void loop() {
@@ -69,14 +70,14 @@ void loop() {
     bno.getEvent(&event);
 
     Serial.print(imus[i].name);
-    Serial.print(" | Yaw: ");
-    Serial.print(event.orientation.x, 2);
     Serial.print(" | Roll: ");
-    Serial.print(event.orientation.y, 2);
+    Serial.print(event.orientation.x, 2);
     Serial.print(" | Pitch: ");
+    Serial.print(event.orientation.y, 2);
+    Serial.print(" | Yaw: ");
     Serial.println(event.orientation.z, 2);
   }
 
   Serial.println("-------------------------");
-  delay(200);
+  delay(2000);
 }

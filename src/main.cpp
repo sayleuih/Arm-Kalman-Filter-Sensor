@@ -58,7 +58,7 @@ void setup() {
     delay(500);
   }
 
-  Serial.println("Starting yaw/roll/pitch readings...");
+  Serial.println("Starting roll/pitch/yaw readings...");
 }
 
 void loop() {
@@ -69,11 +69,11 @@ void loop() {
     bno.getEvent(&event);
 
     Serial.print(imus[i].name);
-    Serial.print(" | Yaw: ");
-    Serial.print(event.orientation.x, 2);
     Serial.print(" | Roll: ");
-    Serial.print(event.orientation.y, 2);
+    Serial.print(event.orientation.x, 2);
     Serial.print(" | Pitch: ");
+    Serial.print(event.orientation.y, 2);
+    Serial.print(" | Yaw: ");
     Serial.println(event.orientation.z, 2);
   }
 
